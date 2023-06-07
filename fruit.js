@@ -1,12 +1,12 @@
 import * as fs from 'fs';
 
-let csvFile = fs.readFileSync('./basket.csv');
+let filePath = process.argv[2];
+
+let csvFile = fs.readFileSync(filePath);
+
 const arr = csvFile.toString().split("\r");
 
-//console.log(headers);
 let fruitBasket = [];
-
-let headers = arr[0].split(',');
 
 for(let i = 1; i < arr.length; i++) {
     let fruitData = arr[i].split(',');
@@ -56,7 +56,7 @@ function characteristicsOfFruitByType(arr) {
     let fruitsArr = arr;
     let fruits = fruitsArr.map(fruit => fruit.slice(0, 4));
 
-    console.log(JSON.stringify(fruits));
+    return JSON.stringify(fruits);
 };
 
 function fruitsInBasketOverThreeDays(arr) {
